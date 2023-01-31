@@ -40,7 +40,7 @@ export default function App() {
       >
         <VStack space={5} alignItems="center" >
           <NavbarBottom></NavbarBottom>
-          <Heading size="lg">Primeira change</Heading>
+          <Heading size="lg">Segunda change</Heading>
           <HStack space={2} alignItems="center">
             <Text>Edit</Text>
             <Box
