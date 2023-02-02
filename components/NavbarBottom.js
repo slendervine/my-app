@@ -11,6 +11,7 @@ import {
   extendTheme,
   VStack,
   Box,
+  Container,
 
 } from "native-base";
 
@@ -23,7 +24,7 @@ const App = () => {
         start: [0, 0],
         end: [1, 0]
       }
-    }} p="12" rounded="xl" _text={{
+    }} px="2.5" py="8" w="110%" rounded="xl" _text={{
       fontSize: 'md',
       fontWeight: 'medium',
       color: 'warmGray.50',
@@ -44,7 +45,7 @@ const App = () => {
   
   function NavbarBottom() {
     return <NativeBaseProvider config={config}>
-        <Center flex={1} px="3">
+        <Center flex={1} p="10">
           <App />
         </Center>
       </NativeBaseProvider>;

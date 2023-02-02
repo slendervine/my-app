@@ -1,4 +1,5 @@
 import React from "react";
+import { Platform,SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import {
   Text,
   Link,
@@ -10,12 +11,15 @@ import {
   NativeBaseProvider,
   extendTheme,
   VStack,
-  Box,
-  View,
+  Divider,
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
-import { Platform,SafeAreaView } from "react-native";
+
 import NavbarBottom from "./components/NavbarBottom";
+import TipoImovel from "./components/Select/TipoImovel";
+import LocalizacaoCadastroImovelInfo from "./components/LocalizacaoCadastroImovel";
+import FinanceiroCadastroImovellInfo from "./components/FinanceiroCadastroImovel";
+import LocacaoCadastroImovelInfo from "./components/LocacaoCadastroImovel";
+
 
 // Define the config
 const config = {
@@ -29,46 +33,58 @@ export const theme = extendTheme({ config });
 export default function App() {
   return (
     <NativeBaseProvider>
-    <SafeAreaView>
-      <View>
-      
+      <ScrollView>
+
       <Center
         _dark={{ bg: "blueGray.900" }}
         _light={{ bg: "blueGray.50" }}
         px={4}
         flex={1}
       >
-        <VStack space={5} alignItems="center" >
-          <NavbarBottom></NavbarBottom>
-          <Heading size="lg">fiz algumas alteracoes 1111</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Box
-              _web={{
-                _text: {
-                  fontFamily: "monospace",
-                  fontSize: "sm",
-                },
-              }}
-              px={2}
-              py={1}
-              _dark={{ bg: "blueGray.800" }}
-              _light={{ bg: "blueGray.200" }}
-            >
-              App.js
-            </Box>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
-          <ToggleDarkMode />
+        <VStack alignItems="center">
+          <NavbarBottom mt="100px"/>
+      
+
+      
+          <Heading  size="sm">Qual o tipo de imóvel você quer cadastrar?</Heading>
+          <TipoImovel px={10} accessibilityLabel="teste" placeholder="teste"/>
+
+          <Divider my="2" _light={{
+              bg: "emerald.500"
+            }} _dark={{
+              bg: "emerald.500"
+            }} w="300" mt={8} mb={8} 
+          />
+        
+         
+            <LocalizacaoCadastroImovelInfo />
+
+            <Divider my="2" _light={{
+              bg: "emerald.500"
+            }} _dark={{
+              bg: "emerald.500"
+            }} w="300" mt={8} mb={8} />
+
+            <FinanceiroCadastroImovellInfo />
+
+            <Divider my="2" 
+              _light={{
+                bg: "emerald.500"
+              }} 
+              _dark={{
+                bg: "emerald.500"
+              }} 
+              w="300" mt={8} mb={8} 
+            />
+
+            <LocacaoCadastroImovelInfo />
+          
         </VStack>
       </Center>
-    </View>
-    </SafeAreaView>
+
+
+
+      </ScrollView>
     </NativeBaseProvider>
   );
 }
@@ -83,7 +99,7 @@ function ToggleDarkMode() {
         isChecked={colorMode === "light"}
         onToggle={toggleColorMode}
         aria-label={
-          colorMode === "light" ? "switch to dark mode 2" : "switch to light mode"
+          colorMode === "light" ? "switch to dark mode" : "switch to light mode"
         }
       />
       <Text>Light</Text>
